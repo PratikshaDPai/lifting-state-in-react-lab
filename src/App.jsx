@@ -51,6 +51,7 @@ const App = () => {
   return (
     <main>
       <h1>Burger Stacker</h1>
+      <h2>{stack.length === 0 ? "No Ingredients" : ""}</h2>
       <section>
         <IngredientList
           ingredients={availableIngredients}
