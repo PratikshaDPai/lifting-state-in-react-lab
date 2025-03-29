@@ -27,14 +27,14 @@ const App = () => {
   ];
   const [stack, setStack] = useState([]);
 
-  function handleIngredientListClick(ingredient) {
+  function addToBurger(ingredient) {
     const newStack = [...stack];
     newStack.push({ ingredient, key: latestStackKey });
     latestStackKey++;
     setStack(newStack);
   }
 
-  function handleStackClick(ingredient) {
+  function removeFromBurger(ingredient) {
     const newStack = [...stack];
 
     // Remove the last occurrence of the ingredient
@@ -54,9 +54,9 @@ const App = () => {
       <section>
         <IngredientList
           ingredients={availableIngredients}
-          handleClick={handleIngredientListClick}
+          handleClick={addToBurger}
         />
-        <BurgerStack stack={stack} handleClick={handleStackClick} />
+        <BurgerStack stack={stack} handleClick={removeFromBurger} />
       </section>
     </main>
   );
