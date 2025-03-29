@@ -12,6 +12,7 @@ const IngredientList = ({ ingredients, handleClick }) => {
             key={ingredient.name}
             ingredient={ingredient}
             handleClick={handleClick}
+            buttonContent={"+"}
           />
         ))}
     </ul>

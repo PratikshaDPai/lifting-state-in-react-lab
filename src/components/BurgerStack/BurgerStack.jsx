@@ -12,6 +12,7 @@ const BurgerStack = ({ stack, handleClick }) => {
             key={key}
             ingredient={ingredient}
             handleClick={handleClick}
+            buttonContent={"X"}
           />
         ))
       }
