@@ -1,6 +1,12 @@
 // src/App.jsx
 
+import { useState } from "react";
+
 import "./App.css";
+import BurgerStack from "./components/BurgerStack/BurgerStack";
+import IngredientList from "./components/IngredientList/IngredientList";
+
+let latestStackKey = 0;
 
 const App = () => {
   const availableIngredients = [
@@ -19,11 +25,39 @@ const App = () => {
     { name: "Cheddar Cheese", color: "#FDE18B" },
     { name: "Swiss Cheese", color: "#F1E1A8" },
   ];
+  const [stack, setStack] = useState([]);
+
+  function handleIngredientListClick(ingredient) {
+    const newStack = [...stack];
+    newStack.push({ ingredient, key: latestStackKey });
+    latestStackKey++;
+    setStack(newStack);
+  }
+
+  function handleStackClick(ingredient) {
+    const newStack = [...stack];
+
+    // Remove the last occurrence of the ingredient
+    // from the stack
+    for (let i = newStack.length - 1; i >= 0; i--) {
+      if (newStack[i].ingredient === ingredient) {
+        newStack.splice(i, 1);
+        break;
+      }
+    }
+    setStack(newStack);
+  }
 
   return (
     <main>
       <h1>Burger Stacker</h1>
-      <section>{/* List & Stack components */}</section>
+      <section>
+        <IngredientList
+          ingredients={availableIngredients}
+          handleClick={handleIngredientListClick}
+        />
+        <BurgerStack stack={stack} handleClick={handleStackClick} />
+      </section>
     </main>
   );
 };
