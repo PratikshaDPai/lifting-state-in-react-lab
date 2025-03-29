@@ -1,18 +1,18 @@
 // src/components/BurgerStack/BurgerStack.jsx
 
+import Ingredient from "../Ingredient/Ingredient";
+
 const BurgerStack = ({ stack, handleClick }) => {
   return (
     <ul>
       {
         // Copy the array since reversing modifies it in-place
         [...stack].reverse().map(({ ingredient, key }) => (
-          <li
+          <Ingredient
             key={key}
-            style={{ backgroundColor: ingredient.color }}
-            onClick={() => handleClick(ingredient)}
-          >
-            {ingredient.name}
-          </li>
+            ingredient={ingredient}
+            handleClick={handleClick}
+          />
         ))
       }
     </ul>

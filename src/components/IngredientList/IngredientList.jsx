@@ -1,18 +1,18 @@
 // src/components/IngredientList/IngredientList.jsx
 
+import Ingredient from "../Ingredient/Ingredient";
+
 const IngredientList = ({ ingredients, handleClick }) => {
   return (
     <ul>
       {ingredients
         .filter((ingredient) => !ingredient.isUsed)
         .map((ingredient) => (
-          <li
+          <Ingredient
             key={ingredient.name}
-            style={{ backgroundColor: ingredient.color }}
-            onClick={() => handleClick(ingredient)}
-          >
-            {ingredient.name}
-          </li>
+            ingredient={ingredient}
+            handleClick={handleClick}
+          />
         ))}
     </ul>
   );
